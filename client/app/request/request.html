@@ -1,0 +1,51 @@
+<div class="container container-full">
+    <h1 class="page-header">Requests:</h1>
+    <div class="row">
+        <div class="col-lg-12">
+            <table id="requeststbl" class="table">
+                <thead>
+                    <th colspan="1" class="sort-filter">
+                        <a href="" ng-click="sort('url')">Request path <span ng-show="sortFilter.type == 'url'" class="fa" ng-class="sortFilter.reverse ? 'fa-caret-up' : 'fa-caret-down'"></span></a>
+                    </th>
+                    <th colspan="1" class="sort-filter">
+                        <a href="" ng-click="sort('method')">Method <span ng-show="sortFilter.type == 'method'" class="fa" ng-class="sortFilter.reverse ? 'fa-caret-up' : 'fa-caret-down'"></a>
+                    </th>
+                    <th colspan="1">
+                        Req Headers
+                    </th>
+                    <th colspan="1">
+                        Req Params
+                    </th>
+                    <th colspan="1" class="sort-filter">
+                        <a href="" ng-click="sort('server.hostname')">Response Data <span ng-show="sortFilter.type == 'hostname'" class="fa" ng-class="sortFilter.reverse ? 'fa-caret-up' : 'fa-caret-down'"></a>
+                    </th>
+                    <th colspan="1">
+                        Response Headers
+                    </th>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="request in requests | orderBy:sortFilter.type:sortFilter.reverse | filter:filter">
+                        <td class="col-md-2 justify-text">
+                            {{request.path}}
+                        </td>
+                        <td class="col-md-1 justify-text">
+                            {{request.method}}
+                        </td>
+                        <td class="col-md-4 justify-text">
+                            {{request.headers}}
+                        </td>
+                        <td class="col-md-2 justify-text">
+                            {{request.bodyContent}}
+                        </td>
+                        <td class="col-md-2 justify-text">
+                            {{request.response.data}}
+                        </td>
+                        <td class="col-md-1 ">
+                            {{request.response.headers}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
